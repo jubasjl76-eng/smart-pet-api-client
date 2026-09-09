@@ -1,0 +1,36 @@
+{
+  "name": "@jubasjl76-eng/api-client",
+  "version": "0.1.0",
+  "description": "Generated TypeScript client for the Smart Pet API: openapi.json types + an openapi-fetch wrapper with 429/backoff.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "private": false,
+  "repository": { "type": "git", "url": "git+https://github.com/jubasjl76-eng/smart-pet-api-client.git" },
+  "publishConfig": { "registry": "https://npm.pkg.github.com", "access": "restricted" },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./schema": { "types": "./dist/schema.d.ts" },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": ["dist", "CHANGELOG.md"],
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "codegen": "node scripts/codegen.mjs",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "openapi-fetch": "^0.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "openapi-typescript": "^7.13.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.0.0"
+  }
+}

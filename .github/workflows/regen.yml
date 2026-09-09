@@ -1,0 +1,32 @@
+name: Regenerate from openapi.json
+
+# Daily + on demand: pull the backend's current openapi.json, regenerate
+# src/schema.d.ts, bump the patch version, and open a PR if anything changed.
+on:
+  schedule: [{ cron: "17 6 * * *" }]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  regen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with: { node-version: "22", cache: npm }
+      - run: npm ci
+      - run: npm run codegen
+      - id: diff
+        run: git diff --quiet src/schema.d.ts && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
+      - if: steps.diff.outputs.changed == 'true'
+        run: npm version patch --no-git-tag-version
+      - if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/regen-schema
+          title: "chore: regenerate api-client schema from openapi.json"
+          commit-message: "chore: regenerate schema.d.ts + bump patch"
+          body: "Automated: the backend's `openapi.json` changed. Review the type diff and merge to publish."
