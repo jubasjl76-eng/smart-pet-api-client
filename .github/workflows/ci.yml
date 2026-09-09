@@ -22,4 +22,4 @@ jobs:
       - run: npm ci
       - run: npm run codegen
       - name: schema.d.ts is up to date
-        run: git diff --exit-code src/schema.d.ts || (echo "::error::src/schema.d.ts is stale — run 'npm run codegen'"; exit 1)
+        run: git diff --exit-code src/schema.ts || (echo "::error::src/schema.ts is stale — run 'npm run codegen'"; exit 1)

@@ -1,4 +1,4 @@
-// Regenerate src/schema.d.ts from smart-pet-backend's openapi.json.
+// Regenerate src/schema.ts from smart-pet-backend's openapi.json.
 //   OPENAPI_URL overrides the source (default: the backend's `development` branch).
 import { writeFileSync } from 'node:fs';
 import openapiTS, { astToString } from 'openapi-typescript';
@@ -13,5 +13,5 @@ const header = `/**
  * Do not edit. Re-run codegen when the backend's openapi.json changes.
  */
 `;
-writeFileSync(new URL('../src/schema.d.ts', import.meta.url), header + astToString(ast));
-console.log('wrote src/schema.d.ts from', url);
+writeFileSync(new URL('../src/schema.ts', import.meta.url), header + astToString(ast));
+console.log('wrote src/schema.ts from', url);

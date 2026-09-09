@@ -1,7 +1,7 @@
 name: Regenerate from openapi.json
 
 # Daily + on demand: pull the backend's current openapi.json, regenerate
-# src/schema.d.ts, bump the patch version, and open a PR if anything changed.
+# src/schema.ts, bump the patch version, and open a PR if anything changed.
 on:
   schedule: [{ cron: "17 6 * * *" }]
   workflow_dispatch:
@@ -20,7 +20,7 @@ jobs:
       - run: npm ci
       - run: npm run codegen
       - id: diff
-        run: git diff --quiet src/schema.d.ts && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
+        run: git diff --quiet src/schema.ts && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
       - if: steps.diff.outputs.changed == 'true'
         run: npm version patch --no-git-tag-version
       - if: steps.diff.outputs.changed == 'true'

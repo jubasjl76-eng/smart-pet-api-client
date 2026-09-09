@@ -5,18 +5,35 @@
   "type": "module",
   "license": "UNLICENSED",
   "private": false,
-  "repository": { "type": "git", "url": "git+https://github.com/jubasjl76-eng/smart-pet-api-client.git" },
-  "publishConfig": { "registry": "https://npm.pkg.github.com", "access": "restricted" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jubasjl76-eng/smart-pet-api-client.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
-    "./schema": { "types": "./dist/schema.d.ts" },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./schema": {
+      "types": "./dist/schema.d.ts",
+      "default": "./dist/schema.js"
+    },
     "./package.json": "./package.json"
   },
   "sideEffects": false,
-  "files": ["dist", "CHANGELOG.md"],
-  "engines": { "node": ">=20" },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "codegen": "node scripts/codegen.mjs",
     "build": "tsc",
