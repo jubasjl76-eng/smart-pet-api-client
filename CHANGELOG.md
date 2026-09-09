@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1 — 2026-09-10
+
+- Fix: generated types are `src/schema.ts` (a real module), so `tsc` emits
+  `dist/schema.{js,d.ts}` and consumers resolve the `paths` type. `0.1.0`
+  shipped without them.
+
 ## 0.1.0 — 2026-09-10
 
 - First release (Phase 14, A1). Generated TS client for the Smart Pet API.
