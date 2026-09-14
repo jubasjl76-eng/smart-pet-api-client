@@ -1,6 +1,6 @@
 {
   "name": "@jubasjl76-eng/api-client",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Generated TypeScript client for the Smart Pet API: openapi.json types + an openapi-fetch wrapper with 429/backoff.",
   "type": "module",
   "license": "UNLICENSED",
